@@ -1,0 +1,8 @@
+//
+// Created by admin on 2019/12/24.
+//
+
+#ifndef LEECODE_ISPALINDROME_H
+#define LEECODE_ISPALINDROME_H
+
+#endif //LEECODE_ISPALINDROME_H
