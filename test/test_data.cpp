@@ -68,6 +68,29 @@ TEST(longestCommonPrefix, c1) {
 
 }
 
+TEST(longestCommonPrefix_v1, c1) {
+
+
+    longestCommonPrefix::Solution s;
+    string s1[] = {"flower", "flow", "flight"};
+    auto a = vector<string>(s1, s1 + 3);
+    EXPECT_EQ("fl", s.longestCommonPrefix_v1(a));
+
+    string s2[] = {"dog","racecar","car"};
+    a = vector<string>(s2, s2 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+
+    string s3[] = {"","racecar","car"};
+    a = vector<string>(s3, s3 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+    string s4[] = {"abca","abc"};
+    a = vector<string>(s4, s4 + 2);
+    EXPECT_EQ("abc", s.longestCommonPrefix_v1(a));
+
+    a = vector<string>();
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+
+}
 GTEST_API_ int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
