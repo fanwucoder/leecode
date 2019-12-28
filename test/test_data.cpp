@@ -59,6 +59,10 @@ TEST(longestCommonPrefix, c1) {
     string s3[] = {"","racecar","car"};
     a = vector<string>(s3, s3 + 3);
     EXPECT_EQ("", s.longestCommonPrefix(a));
+    string s4[] = {"abca","abc"};
+    a = vector<string>(s4, s4 + 2);
+    EXPECT_EQ("abc", s.longestCommonPrefix(a));
+
     a = vector<string>();
     EXPECT_EQ("", s.longestCommonPrefix(a));
 
