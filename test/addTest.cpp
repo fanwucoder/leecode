@@ -7,15 +7,18 @@
 #include "gtest/gtest.h"
 #include "../src/Solution.h"
 #include "../src/StrStr.h"
+#include "../src/IsPalindromelink.h"
+
 namespace StrStr {
-      class Solution;
+    class Solution;
 };
-int add(int a, int b){
-    return a+b;
+
+int add(int a, int b) {
+    return a + b;
 }
 
 
-TEST(testMyAtoi, c1){
+TEST(testMyAtoi, c1) {
     myAtoi::Solution solution;
     EXPECT_EQ(42, solution.myAtoi("42"));
     EXPECT_EQ(4193, solution.myAtoi("4193 with words"));
@@ -25,19 +28,46 @@ TEST(testMyAtoi, c1){
     EXPECT_EQ(1, solution.myAtoi("+1"));
     EXPECT_EQ(0, solution.myAtoi("+-2"));
 }
-TEST(testStrStr, c1){
+
+TEST(testStrStr, c1) {
 
 
     StrStr::Solution s;
-    EXPECT_EQ(1, s.strStr("1234","234"));
-    EXPECT_EQ(0, s.strStr("1234","123"));
-    EXPECT_EQ(0, s.strStr("123","123"));
-    EXPECT_EQ(0, s.strStr("123","12"));
-    EXPECT_EQ(1, s.strStr("123","23"));
-    EXPECT_EQ(-1, s.strStr("123","231"));
+    EXPECT_EQ(1, s.strStr("1234", "234"));
+    EXPECT_EQ(0, s.strStr("1234", "123"));
+    EXPECT_EQ(0, s.strStr("123", "123"));
+    EXPECT_EQ(0, s.strStr("123", "12"));
+    EXPECT_EQ(1, s.strStr("123", "23"));
+    EXPECT_EQ(-1, s.strStr("123", "231"));
 
 }
-GTEST_API_ int main(int argc, char** argv){
+
+TEST(IsPalindromelink, c1) {
+
+
+    IsPalindromelink::Solution s;
+    EXPECT_EQ(true, s.isPalindrome(NULL));
+    int a[3] = {1, 2, 1};
+    auto l = IsPalindromelink::makeList(a, 0, 3);
+    EXPECT_EQ(true, s.isPalindrome(l));
+    int a1[3] = {1, 2, 2};
+     l = IsPalindromelink::makeList(a1, 0, 3);
+    EXPECT_EQ(false, s.isPalindrome(l));
+    int a3[] = {1, 2, 2,1};
+    l = IsPalindromelink::makeList(a3, 0, 4);
+    EXPECT_EQ(true, s.isPalindrome(l));
+    int a4[] = {1};
+    l = IsPalindromelink::makeList(a4, 0, 1);
+    EXPECT_EQ(true, s.isPalindrome(l));
+//    EXPECT_EQ(0, s.strStr("1234","123"));
+//    EXPECT_EQ(0, s.strStr("123","123"));
+//    EXPECT_EQ(0, s.strStr("123","12"));
+//    EXPECT_EQ(1, s.strStr("123","23"));
+//    EXPECT_EQ(-1, s.strStr("123","231"));
+
+}
+
+GTEST_API_ int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

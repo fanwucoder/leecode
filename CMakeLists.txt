@@ -16,7 +16,7 @@ include_directories(${googleTestDir}/googlemock/include)
 set(SOURCE_FILE
         src/add.cpp
         test/addTest.cpp
-        src/add.h test/addTest.cpp test/addTest.h src/Solution.cpp src/Solution.h src/StrStr.cpp src/StrStr.h)
+        src/add.h test/addTest.cpp test/addTest.h src/Solution.cpp src/Solution.h src/StrStr.cpp src/StrStr.h src/IsPalindromelink.h)
 add_executable(GTest ${SOURCE_FILE})
 
 # Link with GoogleTest
