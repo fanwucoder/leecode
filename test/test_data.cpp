@@ -2,11 +2,13 @@
 // Created by admin on 2019/12/26.
 //
 
-#include "addTest.h"
+#include "test_data.h"
 
 #include "gtest/gtest.h"
 #include "../src/Solution.h"
 #include "../src/StrStr.h"
+#include "../src/LongestCommonPrefix.h"
+#include <vector>
 #include "../src/IsPalindromelink.h"
 
 namespace StrStr {
@@ -42,6 +44,54 @@ TEST(testStrStr, c1) {
 
 }
 
+TEST(longestCommonPrefix, c1) {
+
+
+    longestCommonPrefix::Solution s;
+    string s1[] = {"flower", "flow", "flight"};
+    auto a = vector<string>(s1, s1 + 3);
+    EXPECT_EQ("fl", s.longestCommonPrefix(a));
+
+    string s2[] = {"dog","racecar","car"};
+    a = vector<string>(s2, s2 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix(a));
+
+    string s3[] = {"","racecar","car"};
+    a = vector<string>(s3, s3 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix(a));
+    string s4[] = {"abca","abc"};
+    a = vector<string>(s4, s4 + 2);
+    EXPECT_EQ("abc", s.longestCommonPrefix(a));
+
+    a = vector<string>();
+    EXPECT_EQ("", s.longestCommonPrefix(a));
+
+}
+
+TEST(longestCommonPrefix_v1, c1) {
+
+
+    longestCommonPrefix::Solution s;
+    string s1[] = {"flower", "flow", "flight"};
+    auto a = vector<string>(s1, s1 + 3);
+    EXPECT_EQ("fl", s.longestCommonPrefix_v1(a));
+
+    string s2[] = {"dog","racecar","car"};
+    a = vector<string>(s2, s2 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+
+    string s3[] = {"","racecar","car"};
+    a = vector<string>(s3, s3 + 3);
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+    string s4[] = {"abca","abc"};
+    a = vector<string>(s4, s4 + 2);
+    EXPECT_EQ("abc", s.longestCommonPrefix_v1(a));
+
+    a = vector<string>();
+    EXPECT_EQ("", s.longestCommonPrefix_v1(a));
+
+}
+
 TEST(IsPalindromelink, c1) {
 
 
@@ -51,7 +101,7 @@ TEST(IsPalindromelink, c1) {
     auto l = IsPalindromelink::makeList(a, 0, 3);
     EXPECT_EQ(true, s.isPalindrome(l));
     int a1[3] = {1, 2, 2};
-     l = IsPalindromelink::makeList(a1, 0, 3);
+    l = IsPalindromelink::makeList(a1, 0, 3);
     EXPECT_EQ(false, s.isPalindrome(l));
     int a3[] = {1, 2, 2,1};
     l = IsPalindromelink::makeList(a3, 0, 4);
@@ -66,7 +116,6 @@ TEST(IsPalindromelink, c1) {
 //    EXPECT_EQ(-1, s.strStr("123","231"));
 
 }
-
 GTEST_API_ int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
