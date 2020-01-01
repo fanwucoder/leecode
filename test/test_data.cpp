@@ -10,6 +10,7 @@
 #include "../src/LongestCommonPrefix.h"
 #include <vector>
 #include "../src/IsPalindromelink.h"
+#include "../src/isSymmetric.h"
 
 namespace StrStr {
     class Solution;
@@ -33,7 +34,7 @@ TEST(testMyAtoi, c1) {
 
 TEST(testStrStr, c1) {
 
-    cout<<INT_MAX<<endl;
+    cout << INT_MAX << endl;
     StrStr::Solution s;
     EXPECT_EQ(1, s.strStr("1234", "234"));
     EXPECT_EQ(0, s.strStr("1234", "123"));
@@ -52,14 +53,14 @@ TEST(longestCommonPrefix, c1) {
     auto a = vector<string>(s1, s1 + 3);
     EXPECT_EQ("fl", s.longestCommonPrefix(a));
 
-    string s2[] = {"dog","racecar","car"};
+    string s2[] = {"dog", "racecar", "car"};
     a = vector<string>(s2, s2 + 3);
     EXPECT_EQ("", s.longestCommonPrefix(a));
 
-    string s3[] = {"","racecar","car"};
+    string s3[] = {"", "racecar", "car"};
     a = vector<string>(s3, s3 + 3);
     EXPECT_EQ("", s.longestCommonPrefix(a));
-    string s4[] = {"abca","abc"};
+    string s4[] = {"abca", "abc"};
     a = vector<string>(s4, s4 + 2);
     EXPECT_EQ("abc", s.longestCommonPrefix(a));
 
@@ -76,14 +77,14 @@ TEST(longestCommonPrefix_v1, c1) {
     auto a = vector<string>(s1, s1 + 3);
     EXPECT_EQ("fl", s.longestCommonPrefix_v1(a));
 
-    string s2[] = {"dog","racecar","car"};
+    string s2[] = {"dog", "racecar", "car"};
     a = vector<string>(s2, s2 + 3);
     EXPECT_EQ("", s.longestCommonPrefix_v1(a));
 
-    string s3[] = {"","racecar","car"};
+    string s3[] = {"", "racecar", "car"};
     a = vector<string>(s3, s3 + 3);
     EXPECT_EQ("", s.longestCommonPrefix_v1(a));
-    string s4[] = {"abca","abc"};
+    string s4[] = {"abca", "abc"};
     a = vector<string>(s4, s4 + 2);
     EXPECT_EQ("abc", s.longestCommonPrefix_v1(a));
 
@@ -103,7 +104,7 @@ TEST(IsPalindromelink, c1) {
     int a1[3] = {1, 2, 2};
     l = IsPalindromelink::makeList(a1, 0, 3);
     EXPECT_EQ(false, s.isPalindrome(l));
-    int a3[] = {1, 2, 2,1};
+    int a3[] = {1, 2, 2, 1};
     l = IsPalindromelink::makeList(a3, 0, 4);
     EXPECT_EQ(true, s.isPalindrome(l));
     int a4[] = {1};
@@ -116,6 +117,22 @@ TEST(IsPalindromelink, c1) {
 //    EXPECT_EQ(-1, s.strStr("123","231"));
 
 }
+
+TEST(isSymmetric, c1) {
+    int arr[] = {1, 2, 2, 3, 4, 4, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int **arr1 = new int *[len];
+    for (int i = 0; i < len; ++i) {
+        arr1[i] = &arr[i];
+    }
+    isSymmetric::TreeNode *a = NULL;
+    isSymmetric::TreeNode *t = creatBTree(arr1, 0, a);
+    isSymmetric::Solution s;
+//    PrevOrderTraversal(t);
+    EXPECT_EQ(true, s.isSymmetric(t));
+}
+
 GTEST_API_ int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
