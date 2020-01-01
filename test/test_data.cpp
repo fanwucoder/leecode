@@ -33,7 +33,7 @@ TEST(testMyAtoi, c1) {
 
 TEST(testStrStr, c1) {
 
-
+    cout<<INT_MAX<<endl;
     StrStr::Solution s;
     EXPECT_EQ(1, s.strStr("1234", "234"));
     EXPECT_EQ(0, s.strStr("1234", "123"));
