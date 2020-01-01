@@ -4,6 +4,8 @@
 
 #include "Solution.h"
 #include <iostream>
+
+
 using namespace std;
 int myAtoi::Solution::myAtoi(string str) {
     unsigned long long int size=str.size();
