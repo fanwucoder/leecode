@@ -11,6 +11,7 @@
 #include <vector>
 #include "../src/IsPalindromelink.h"
 #include "../src/isSymmetric.h"
+#include "../src/maxSubArray.h"
 
 namespace StrStr {
     class Solution;
@@ -131,6 +132,17 @@ TEST(isSymmetric, c1) {
     isSymmetric::Solution s;
 //    PrevOrderTraversal(t);
     EXPECT_EQ(true, s.isSymmetric(t));
+}
+
+TEST(maxSubArray, c1) {
+
+    maxSubArray::Solution s;
+//    PrevOrderTraversal(t);
+    int vv[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    vector<int> v = vector<int>(vv, vv +  sizeof(vv)/ sizeof(int));
+    EXPECT_EQ(6, s.maxSubArray(v));
+    EXPECT_EQ(6, s.maxSubArray_v1(v));
+    EXPECT_EQ(6, s.maxSubArray_v2(v));
 }
 
 GTEST_API_ int main(int argc, char **argv) {
