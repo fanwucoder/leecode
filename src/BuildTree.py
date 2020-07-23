@@ -18,16 +18,7 @@ class TreeNode:
 # 2.通过左边子树的边界，构建左子树
 # 3.通过右边子树边界，构建右子树
 
-# 0 7 0 7
-# mid=3
-# len1=3
-# len2=3
-#
-# 1 4 0 3
-# mid=1
-# len=0
-#
-# 5 7 5 7
+
 
 from typing import List
 
@@ -42,12 +33,12 @@ class Solution:
 
             root = TreeNode(preorder[l])
             mid = idx[preorder[l]]
-            len1 = mid - l1 - 1
+            len1 = mid - l1
             len2 = r1 - mid
 
             root.left = build_tree(l + 1, l + 1 + len1, l1, mid)
 
-            root.right = build_tree(r - len2 + 1, r, mid + 1, r1)
+            root.right = build_tree(r - len2, r, mid + 1, r1)
             return root
             # root.right = build_tree(l, r - 1, )
 
