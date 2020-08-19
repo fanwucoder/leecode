@@ -2,6 +2,7 @@ import unittest
 from typing import List
 
 
+# 方法一 线性查找
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         cnt = len(nums)
@@ -14,7 +15,8 @@ class Solution:
                     nums[i - 1] < nums[i] and nums[i + 1] < nums[i]):
                 return i
 
-
+# 方法二
+# todo 二分查找
 class TestDict(unittest.TestCase):
     def test_data(self):
         s = Solution()
