@@ -15,9 +15,10 @@ class Solution:
                     nums[i - 1] < nums[i] and nums[i + 1] < nums[i]):
                 return i
 
+
 # 方法二
 # todo 二分查找
-class TestDict(unittest.TestCase):
+class TestfindPeak(unittest.TestCase):
     def test_data(self):
         s = Solution()
         self.assertEqual(3, s.findPeakElement([3, 2, 1]))
