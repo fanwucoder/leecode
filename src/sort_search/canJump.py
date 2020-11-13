@@ -1,28 +1,39 @@
 from typing import List
 
 
+# class Solution:
+#     def canJump(self, nums: List[int]) -> bool:
+#         step = 0
+#         how = [x for x in nums]
+#         word=[]
+#         stop = len(nums)
+#         while True:
+#             if step == 0 and how[step] == 0:
+#                 break
+#             next_step = step + how[step]
+#             if next_step >= stop:
+#                 return True
+#             # 1.不能走路，回退
+#             if how[next_step] == 0:
+#                 if how[step] == 0:
+#                     step -= 1
+#                 else:
+#                     how[step] -= 1
+#             # 2.可以走
+#             else:
+#                 step = next_step
+#
+#         return False
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        step = 0
-        how = [x for x in nums]
-        word=[]
-        stop = len(nums)
-        while True:
-            if step == 0 and how[step] == 0:
-                break
-            next_step = step + how[step]
-            if next_step >= stop:
+        n = len(nums)
+        rightmost = 0
+        for i in range(n):
+            if i <= rightmost:
+                rightmost = max(rightmost, i + nums[i])
+            if rightmost >= n - 1:
                 return True
-            # 1.不能走路，回退
-            if how[next_step] == 0:
-                if how[step] == 0:
-                    step -= 1
-                else:
-                    how[step] -= 1
-            # 2.可以走
-            else:
-                step = next_step
-
         return False
 
 
