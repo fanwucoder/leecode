@@ -1,3 +1,43 @@
+# class Solution(object):
+#     def canJump(self, nums):
+#         """
+#         不行，这个是穷举法
+#         :type nums: List[int]
+#         :rtype: bool
+#         """
+#         howto = [0] * len(nums)
+#         rest = [x for x in nums]
+#         start = 0
+#         finish = len(nums)
+#         cnt = 0
+#         while True:
+#
+#             next_start = start + rest[start]
+#             if next_start >= finish - 1:
+#                 return True
+#             if start == 0 and rest[0] == 0:
+#                 return False
+#             howto[next_start] = rest[start]
+#             rest[start] -= 1
+#             start = next_start
+#
+#             # print("start:%s" % start)
+#             # print("howto:%s" % howto)
+#             # print("rest:%s" % rest)
+#             # print()
+#             while rest[start] == 0:
+#                 start = start - howto[start]
+#                 if start == 0 and rest[0] == 0:
+#                     return False
+#         return False
+
+
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
 from typing import List
 
 
@@ -32,6 +72,8 @@ class Solution:
         for i in range(n):
             if i <= rightmost:
                 rightmost = max(rightmost, i + nums[i])
+                if rightmost >= n - 1:
+                    return True
             if rightmost >= n - 1:
                 return True
         return False
@@ -40,6 +82,18 @@ class Solution:
 def test(*args, **kwargs):
     """
 
+    Args:
+        *args:
+        **kwargs:
+
+    Returns:
+    >>> test([2,3,1,1,4])
+    True
+    >>> test( [3,2,1,0,4])
+    False
+    >>> test([0])
+    True
+    >>> test([0,1])
     :return:
     >>> test([2,3,1,1,4])
     True
