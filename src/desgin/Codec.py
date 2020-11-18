@@ -27,7 +27,7 @@ class Codec:
                 q.put(e.left)
                 q.put(e.right)
         while len(ele) > 0:
-            if not ele[-1]:
+            if  ele[-1] is  None:
                 ele.pop()
             else:
                 break
@@ -39,7 +39,7 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        data=data.replace('null','None')
+        # data = data.replace('null', 'None')
         arr = eval(data)
 
         q = Queue()
@@ -49,15 +49,15 @@ class Codec:
         if q.empty():
             return None
         root_val = q.get()
-        if not root_val:
+        if root_val is None:
             return None
         root = TreeNode(root_val)
         build_q.put(root)
         while not q.empty() and not build_q.empty():
             e = q.get()
             node = build_q.get()
-            print(node.val)
-            if e:
+            # print(node.val)
+            if e is not None:
                 node.left = TreeNode(e)
                 build_q.put(node.left)
             else:
@@ -65,7 +65,7 @@ class Codec:
             if q.empty():
                 break
             e = q.get()
-            if e:
+            if e is not None:
                 node.right = TreeNode(e)
                 build_q.put(node.right)
             else:
@@ -102,8 +102,12 @@ class TreeNode(object):
 
 deser = Codec()
 root = deser.deserialize(
-    '[4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]')
-print(root)
+    '[10,9,11,8,null,null,12,7,null,null,13,6,null,null,14,5,null,null,15,4,null,null,16,3,null,null,17,2,null,null,18,1,null,null,19,0]')
+s1 = deser.serialize(root)
+s2 = deser.serialize(deser.deserialize(s1))
+print(s1)
+print(s2)
+print(s1 == s2)
 
 
 def test(*args, **kwargs):
