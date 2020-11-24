@@ -3,7 +3,7 @@ from collections import defaultdict
 import heapq
 
 
-class Solution:
+class Solution1:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         a = defaultdict(int)
         b = defaultdict(int)
@@ -33,6 +33,22 @@ class Solution:
         return cnt
 
 
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        a = [0 for i in range(26)]
+        for s in tasks:
+            a[ord(s) - ord('A')] += 1
+        a=sorted(a)
+        max_val = a[25] - 1
+        # print(a)
+        total = max_val * n
+        i = 24
+        while i >= 0 and a[i] > 0:
+            total -= min(max_val, a[i])
+            i -= 1
+        return total + len(tasks) if total > 0 else len(tasks)
+
+
 def test(*args, **kwargs):
     """
 
@@ -41,10 +57,10 @@ def test(*args, **kwargs):
     :return:
     >>> test( ["A","A","A","B","B","B"],2)
     8
-    >>> test( ["A","A","A","B","B","B","c","c","c"],2)
+    >>> test( ["A","A","A","B","B","B","C","C","C"],2)
     9
-    >>> test( ["A","A","A","B","B","B","c","c","c","c"],2)
-    12
+    >>> test( ["A","A","A","B","B","B","C","C","C","C"],2)
+    10
     """
 
     s = Solution()
