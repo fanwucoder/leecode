@@ -54,23 +54,26 @@ class UnionFound {
 
 class Solution {
     public int maxNumEdgesToRemove(int n, int[][] edges) {
-        Arrays.sort(edges, (o1, o2) -> Integer.compare(o2[0], o1[0]));
+//        Arrays.sort(edges, (o1, o2) -> Integer.compare(o2[0], o1[0]));
         UnionFound u1 = new UnionFound(n);
         UnionFound u2 = new UnionFound(n);
         int ans = 0;
         for (int[] x : edges) {
             if (x[0] == 3) {
-                if (!u1.unite(x[1]-1,x[2]-1)){
+                if (!u1.unite(x[1] - 1, x[2] - 1)) {
                     ++ans;
-                }else {
-                    u2.unite(x[1]-1,x[2]-1);
+                } else {
+                    u2.unite(x[1] - 1, x[2] - 1);
                 }
-            } else if (x[0] == 2) {
-                if (!u1.unite(x[1]-1,x[2]-1)){
+            }
+        }
+        for (int x[] : edges) {
+            if (x[0] == 2) {
+                if (!u1.unite(x[1] - 1, x[2] - 1)) {
                     ++ans;
                 }
-            } else {
-                if (!u2.unite(x[1]-1,x[2]-1)){
+            } else  {
+                if (!u2.unite(x[1] - 1, x[2] - 1)) {
                     ++ans;
                 }
             }
@@ -84,9 +87,9 @@ class Solution {
 
 class maxNumEdgesToRemove {
     public static void main(String[] args) {
-        Solution s=new Solution();
-        System.out.println(s.maxNumEdgesToRemove(4,new int[][]{{3,1,2},{3,2,3},{1,1,3},{1,2,4},{1,1,2},{2,3,4}}));
-        System.out.println(s.maxNumEdgesToRemove(4,new int[][] {{3,1,2},{3,2,3},{1,1,4},{2,1,4}}));
-        System.out.println(s.maxNumEdgesToRemove(4, new int[][] {{3,2,3},{1,1,2},{2,3,4}}));
+        Solution s = new Solution();
+        System.out.println(s.maxNumEdgesToRemove(4, new int[][]{{3, 1, 2}, {3, 2, 3}, {1, 1, 3}, {1, 2, 4}, {1, 1, 2}, {2, 3, 4}}));
+        System.out.println(s.maxNumEdgesToRemove(4, new int[][]{{3, 1, 2}, {3, 2, 3}, {1, 1, 4}, {2, 1, 4}}));
+        System.out.println(s.maxNumEdgesToRemove(4, new int[][]{{3, 2, 3}, {1, 1, 2}, {2, 3, 4}}));
     }
 }
