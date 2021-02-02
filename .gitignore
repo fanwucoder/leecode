@@ -4,3 +4,4 @@ venv
 /src1/leetcode/editor/cn/all.json
 /src1/leetcode/editor/cn/translation.json
 out
+.idea
