@@ -1,7 +1,10 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 
 public class Utils {
     public static class ListNode {
@@ -29,7 +32,11 @@ public class Utils {
 
         System.out.println("["+String.join(",",arr)+"]");
     }
-
+    public static void printArr(int[] arr){
+        System.out.println("["+ Arrays.stream(arr)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(",")) +"]");
+    }
     public static void main(String[] args) {
         printList(getListNode(new int[]{1,1,2,3,4,4,5}));
     }
