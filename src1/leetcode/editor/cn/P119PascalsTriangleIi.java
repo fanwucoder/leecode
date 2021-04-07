@@ -19,6 +19,7 @@ package leetcode.editor.cn;
 // 👍 229 👎 0
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -26,9 +27,8 @@ import java.util.stream.Collectors;
 public class P119PascalsTriangleIi{
     public static void main(String[] args){
         Solution solution = new P119PascalsTriangleIi().new Solution();
-        List<Integer> nums=solution.getRow(4);
+        List<Integer> nums=solution.getRow(33);
         String a= nums.stream().map(Object::toString).collect(Collectors.joining(","));
-//            System.out.println("i:"+i+",ret:"+a);
         System.out.println(a);
 //        for (Integer x:nums             ) {
 //            System.out.println(x);
@@ -49,11 +49,23 @@ class Solution {
 
             }
             nums.add(j,1);
-
+            String a= nums.stream().map(Object::toString).collect(Collectors.joining(","));
+            System.out.println("{"+a+"},");
         }
         return nums;
     }
 }
+    class Solution1 {
+        public List<Integer> getRow(int rowIndex) {
+            Integer[] row=new Integer[rowIndex+1];
+//            List<Integer> row=new ArrayList<>(rowIndex);
+            row[0]=1;
+            for (int i = 1; i <= rowIndex; ++i) {
+                row[i]=(int)((long) row[i - 1] * (rowIndex - i + 1) / i);
+            }
+            return Arrays.asList(row);
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
